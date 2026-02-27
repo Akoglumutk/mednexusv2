@@ -1,3 +1,6 @@
+// 1. ADD THIS LINE AT THE TOP
+export const dynamic = "force-dynamic";
+
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import AcademicBar from "@/components/dashboard/AcademicBar";
