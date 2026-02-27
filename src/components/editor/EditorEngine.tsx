@@ -1,6 +1,6 @@
 "use client"
 
-import { useEditor, EditorContent, BubbleMenu as TiptapBubbleMenu } from '@tiptap/react'
+import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
 import Typography from '@tiptap/extension-typography'
@@ -240,8 +240,8 @@ export default function EditorEngine({ initialContent, docId, title: initialTitl
       )}
 
       {/* BUBBLE MENU */}
-      {editor && TiptapBubbleMenu && (
-        <TiptapBubbleMenu 
+      {editor && BubbleMenu && (
+        <BubbleMenu 
           editor={editor} 
           tippyOptions={{ duration: 100, zIndex: 9999 }} 
           shouldShow={({ editor }: { editor: any }) => editor.isActive('image') || editor.isActive('imageOcclusion')}
@@ -262,7 +262,7 @@ export default function EditorEngine({ initialContent, docId, title: initialTitl
                   </>
               )}
            </div>
-        </TiptapBubbleMenu>
+        </BubbleMenu>
       )}
       
       <style jsx global>{`
@@ -278,4 +278,5 @@ export default function EditorEngine({ initialContent, docId, title: initialTitl
 
 function ToolbarBtn({ onClick, children }: { onClick: () => void, children: React.ReactNode }) {
   return <button onClick={onClick} className="relative p-2 rounded-lg text-zinc-400 transition-all duration-75 active:text-[#D4AF37] active:bg-zinc-800 active:scale-95">{children}</button>
+
 }
