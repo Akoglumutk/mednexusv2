@@ -1,0 +1,21 @@
+import { type NextRequest } from "next/server";
+import { updateSession } from "@/utils/supabase/middleware";
+
+export async function middleware(request: NextRequest) {
+  // This function refreshes the auth token and handles redirects
+  return await updateSession(request);
+}
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - /login (so we don't redirect infinitely)
+     * - /auth (auth callback routes if needed)
+     */
+    "/((?!_next/static|_next/image|favicon.ico|login|auth).*)",
+  ],
+};
